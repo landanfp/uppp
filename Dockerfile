@@ -14,4 +14,4 @@ CMD ["/bin/bash", "/start.sh"]
 
 
 
-CMD gunicorn app:app & python3 bot.py
+#CMD gunicorn app:app & python3 bot.py
