@@ -1,5 +1,5 @@
-FROM 3.10
-
+FROM python:3.10.8
+WORKDIR /app
 RUN apt update && apt upgrade -y
 RUN apt install git curl python3-pip ffmpeg -y
 RUN pip3 install -U pip
