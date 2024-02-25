@@ -49,10 +49,10 @@ class Config(object):
     SESSION_NAME = os.environ.get("SESSION_NAME", "upoooo")
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001792962793"))
     LOGGER = logging
-    OWNER_ID = int(os.environ.get("OWNER_ID", "763990585"))
+    
     # Update channel for Force Subscribe
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "-1001792962793")
-    
+    OWNER_ID = int(os.environ.get("OWNER_ID", "763990585") 
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "fi2li123robot")
     PRO_USERS = list(set(int(x) for x in os.environ.get("PRO_USERS", "0").split()))
     PRO_USERS.append(OWNER_ID)
