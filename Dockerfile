@@ -1,15 +1,17 @@
 FROM python:3.10.8
 WORKDIR /app
-RUN apt update && apt upgrade -y
-RUN apt install git curl python3-pip ffmpeg -y
-RUN pip3 install -U pip
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs && \
-    npm i -g npm
-COPY requirements.txt /requirements.txt
-RUN cd /
-RUN pip3 install -U -r requirements.txt
-RUN mkdir /Uploader-Bot-V2
-WORKDIR /Uploader-Bot-V2
+COPY ./ /app
+ENV PYTHONUNBUFFERED=1
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get install -y ffmpeg
+
+
 COPY start.sh /start.sh
 CMD ["/bin/bash", "/start.sh"]
+
+
+
+CMD gunicorn app:app & python3 bot.py
